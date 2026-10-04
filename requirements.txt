@@ -1,0 +1,24 @@
+
+numpy>=1.24
+scipy>=1.10
+pandas>=2.0
+
+Geospatial
+rasterio>=1.3
+pyproj>=3.5
+geopandas>=0.14
+shapely>=2.0
+
+Deep Learning
+torch>=2.0
+torchvision>=0.15
+
+Visualization
+matplotlib>=3.7
+seaborn>=0.12
+folium>=0.14
+
+Utilities
+tqdm>=4.65
+pyyaml>=6.0
+jupyter>=1.0
