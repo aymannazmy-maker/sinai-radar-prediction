@@ -1,2 +1,0 @@
-# sinai-radar-prediction
-RF-Propagation-Semantic-Segmentation/ │ ├── README.md │ ├── notebooks/ │ ├── data/ │   ├── raw/ │   ├── processed/ │   └── segmentation/ │ ├── splat/ │ ├── results/ │   ├── figures/ │   ├── maps/ │   └── tables/ │ ├── docs/ │ └── requirements.txt
