@@ -1,0 +1,9 @@
+15.000	; Earth Dielectric Constant (Relative permittivity)
+0.001	; Earth Conductivity (Siemens per meter) — desert
+301.000	; Atmospheric Bending Constant (N-Units)
+9500.000	; Frequency in MHz (X-band radar)
+5	; Radio Climate (5 = Continental Temperate)
+1	; Polarization (1 = Vertical)
+0.50	; Fraction of situations
+0.90	; Fraction of time
+1000	; ERP in watts

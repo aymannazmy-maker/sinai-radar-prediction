@@ -1,48 +1,63 @@
 # Sinai Radar Prediction
 
-## 🎯 Research Objective
-Develop a deep learning model that predicts MSAMS (Medium-Range Surface-to-Air Missile System) Target Engagement Radar (TER) locations based on terrain topography.
-
-## 🧪 Methodology
-1. Download SRTM elevation data for Sinai Peninsula
-2. Generate radar grid points across the region
-3. Compute radar coverage using Splat! (Longley-Rice model)
-4. Build a supervised learning dataset (terrain → coverage)
-5. Train U-Net + ResNet34 to predict coverage
-6. Evaluate and compare with baseline methods
-
-## 📊 Reproducibility
-All experiments are reproducible via:
-- Fixed random seeds
-- Config-driven experiments (`configs/`)
-- Detailed logs in `experiments/`
-- Notebooks as lab journal (`notebooks/`)
-
-## 📚 Documentation
-See `docs/` for:
-- Research protocol
-- Data sources
-- Methodology
-- Experiment log
-- Results
-
-## 🚀 Quick Start
-```bash
-git clone https://github.com/YOUR_USER/sinai-radar-prediction.git
-cd sinai-radar-prediction
-pip install -r requirements.txt
-
-# Sinai Radar Prediction
 Research project: Deep learning for radar site prediction on Sinai terrain.
 
-## Status
-Just started — Step 1 of setup.
+## Research Objective
 
-## Goal
-Reproduce and improve upon:
-- Enhacing precision and efficiency in a Joint Force Dynamic sensor allocation
+Reproduce and improve upon the paper:
+"Enhancing precision and efficiency in a Joint Force Dynamic sensor allocation and target engagement with deep learning"
 
-## Notes
-- Working on GitHub + Colab + Drive
-- Using SRTM data for Sinai Peninsula
-- Target: U-Net based model
+Goal: Train a U-Net model to predict MSAMS (Medium-Range Surface-to-Air Missile System) Target Engagement Radar (TER) coverage based on terrain topography.
+
+## Methodology
+
+1. Data source: NASA SRTM (30 m resolution)
+2. Region: Central Sinai, 50x50 km around (29.5N, 34.0E)
+3. Radar target: SA-27 GOLLUM (Buk-M3)
+4. Coverage simulation: Splat! v1.4.2 with Longley-Rice
+5. Training samples: 1,911 radar sites (matching paper)
+6. Model: U-Net + ResNet34 (pretrained on ImageNet)
+7. Output: Coverage maps in 16 dBm levels
+
+## Project Structure
+
+sinai-radar-prediction/
+  README.md
+  LICENSE
+  requirements.txt
+  .gitignore
+  docs/
+    04_experiment_log.md
+    05_progress.md
+  src/
+    setup.py
+    data_download.py
+    splat_runner.py
+  data/                 (git-ignored)
+  notebooks/
+
+## Quick Start
+
+    git clone https://github.com/aymannazmy-maker/sinai-radar-prediction.git
+    cd sinai-radar-prediction
+    pip install -r requirements.txt
+
+## Current Status
+
+See docs/05_progress.md for detailed progress.
+
+| Phase | Status |
+|-------|--------|
+| Setup | Complete |
+| Data Prep | In Progress |
+| Splat! Runs | Tested (1/1911) |
+| Model Training | Pending |
+
+## Links
+
+- Splat!: https://www.qsl.net/kd2bd/splat.html
+- SRTM: https://earthexplorer.usgs.gov
+
+## License
+
+MIT License - see LICENSE

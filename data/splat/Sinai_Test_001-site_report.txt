@@ -1,0 +1,11 @@
+
+	--==[ SPLAT! v1.4.2 Site Analysis Report For: Sinai_Test_001 ]==--
+
+---------------------------------------------------------------------------
+
+Site location: 29.5000 North / 326.0000 West (29° 30' 0" N / 326° 0' 0" W)
+Ground elevation: 0.00 meters AMSL
+Antenna height: 5.00 meters AGL / 5.00 meters AMSL
+
+---------------------------------------------------------------------------
+
