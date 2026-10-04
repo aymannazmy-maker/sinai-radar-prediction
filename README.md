@@ -31,3 +31,19 @@ See `docs/` for:
 git clone https://github.com/YOUR_USER/sinai-radar-prediction.git
 cd sinai-radar-prediction
 pip install -r requirements.txt
+
+# Sinai Radar Prediction
+
+Research project: Deep learning for radar site prediction on Sinai terrain.
+
+## Status
+Just started — Step 1 of setup.
+
+## Goal
+Reproduce and improve upon:
+- Enhacing precision and efficiency in a Joint Force Dynamic sensor allocation
+
+## Notes
+- Working on GitHub + Colab + Drive
+- Using SRTM data for Sinai Peninsula
+- Target: U-Net based model
