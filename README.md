@@ -33,7 +33,6 @@ cd sinai-radar-prediction
 pip install -r requirements.txt
 
 # Sinai Radar Prediction
-
 Research project: Deep learning for radar site prediction on Sinai terrain.
 
 ## Status
