@@ -241,3 +241,9 @@ splat/
 *.ppm
 *.hgt
 *.sdf
+# Data files (regenerable via setup.py)
+data/raw/*.hgt
+data/raw/*.sdf
+data/raw/*.hgt.gz
+data/processed/*.npy
+!data/.gitkeep
