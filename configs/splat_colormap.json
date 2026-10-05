@@ -1,0 +1,170 @@
+{
+  "description": "Splat! standard colormap for path loss (16 dBm levels)",
+  "source": "Splat! v1.4.2 source code (fontdata.h)",
+  "mode": "Longley-Rice (-olditm)",
+  "note": "Works with any terrain — the colormap is universal, only the distribution varies",
+  "levels": {
+    "1": {
+      "rgb": [
+        255,
+        0,
+        0
+      ],
+      "name": "red",
+      "strength": "strongest"
+    },
+    "2": {
+      "rgb": [
+        255,
+        128,
+        0
+      ],
+      "name": "orange",
+      "strength": "very strong"
+    },
+    "3": {
+      "rgb": [
+        255,
+        165,
+        0
+      ],
+      "name": "light orange",
+      "strength": "strong"
+    },
+    "4": {
+      "rgb": [
+        255,
+        206,
+        0
+      ],
+      "name": "yellow-orange",
+      "strength": "medium-strong"
+    },
+    "5": {
+      "rgb": [
+        255,
+        255,
+        0
+      ],
+      "name": "yellow",
+      "strength": "medium"
+    },
+    "6": {
+      "rgb": [
+        184,
+        255,
+        0
+      ],
+      "name": "yellow-green",
+      "strength": "medium"
+    },
+    "7": {
+      "rgb": [
+        0,
+        255,
+        0
+      ],
+      "name": "green",
+      "strength": "medium"
+    },
+    "8": {
+      "rgb": [
+        0,
+        208,
+        0
+      ],
+      "name": "dark green",
+      "strength": "medium-weak"
+    },
+    "9": {
+      "rgb": [
+        0,
+        196,
+        196
+      ],
+      "name": "cyan",
+      "strength": "weak"
+    },
+    "10": {
+      "rgb": [
+        0,
+        148,
+        255
+      ],
+      "name": "light blue",
+      "strength": "weak"
+    },
+    "11": {
+      "rgb": [
+        0,
+        38,
+        255
+      ],
+      "name": "blue",
+      "strength": "very weak"
+    },
+    "12": {
+      "rgb": [
+        80,
+        80,
+        255
+      ],
+      "name": "blue-violet",
+      "strength": "very weak"
+    },
+    "13": {
+      "rgb": [
+        142,
+        63,
+        255
+      ],
+      "name": "violet",
+      "strength": "extremely weak"
+    },
+    "14": {
+      "rgb": [
+        196,
+        54,
+        255
+      ],
+      "name": "purple",
+      "strength": "extremely weak"
+    },
+    "15": {
+      "rgb": [
+        255,
+        0,
+        255
+      ],
+      "name": "magenta",
+      "strength": "trace"
+    },
+    "16": {
+      "rgb": [
+        255,
+        194,
+        204
+      ],
+      "name": "pink",
+      "strength": "trace"
+    }
+  },
+  "background": {
+    "rgb": [
+      0,
+      0,
+      170
+    ],
+    "name": "dark blue",
+    "meaning": "below threshold"
+  },
+  "radar_marker": {
+    "rgb": [
+      0,
+      0,
+      0
+    ],
+    "name": "black",
+    "meaning": "radar position"
+  }
+}

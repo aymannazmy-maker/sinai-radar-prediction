@@ -134,3 +134,88 @@ Acceptable for now (site at center).
 ---
 
 *Log created: 2026-10-04*
+
+
+---
+
+## [Day 2] Session 02 — Fix SDF/LRP issues + Verify variation
+
+### Objectives
+- Diagnose why all 10 sites produced identical coverage
+- Fix the SDF/binary mismatch (HD vs Standard)
+- Verify variation across different sites
+- Prepare for full 1,911-site run
+
+### Key Discoveries
+
+#### 🔴 Issue 1: SDF/Binary Mismatch
+- **Problem:** Used `srtm2sdf-hd` to create `.sdf`, but ran `splat` (standard) binary
+- **Effect:** Splat! couldn't find SDF files → treated everything as sea-level → all sites gave identical 19.2% coverage
+- **Fix:** Regenerated SDF with standard `srtm2sdf` + used `splat` binary
+- **Result:** Splat! now loads real terrain ✅
+
+#### 🔴 Issue 2: LRP file not being read
+- **Problem:** Splat! ignored `test_site.lrp` and used defaults
+- **Reason:** Splat! reads `splat.lrp` from **current working directory**, not from QTH's directory
+- **Fix:** Create `splat.lrp` in same folder as QTH before each run
+
+#### 🔴 Issue 3: Too many colors (88)
+- **Problem:** PPM has 88 colors: 16 signal + 71 terrain shading + 1 background
+- **Reason:** Splat! draws terrain as grayscale background + signal as colored overlay
+- **Fix:** Filter colors — keep only 16 signal levels + background + radar marker
+- **Colormap saved:** `configs/splat_colormap.json`
+
+#### 🔴 Issue 4: HD mode too slow
+- **Problem:** `splat-hd` took 182s per site (vs 8s for standard)
+- **Decision:** Use standard mode — matches SRTM-1's 30m resolution anyway
+- **Impact:** Full run drops from ~96 hours to ~7.6 hours
+
+### Fixes Applied
+
+| Issue | Solution |
+|-------|----------|
+| SDF mismatch | Regenerate with `srtm2sdf` (not `-hd`) |
+| Wrong binary | Use `splat` (not `splat-hd`) |
+| LRP not read | Place `splat.lrp` in working directory |
+| 88 colors | Filter to 16 signal levels |
+| HD slow | Switch to standard mode |
+
+### Results — 10 Test Sites (v2)
+
+| Metric | Value |
+|--------|-------|
+| Sites processed | 10/10 |
+| Avg time per site | 14.3s |
+| Coverage range | 0.89% → 13.36% (12.47 pp variation) |
+| Mean level range | 8.58 → 12.33 |
+| File size range | 7.6 → 109 KB |
+| **Variation** | ✅ **Confirmed — different sites give different results** |
+
+### Observations
+
+- **West sites (Col 5):** 1-2% coverage (mountains blocking)
+- **East sites (Col 40):** 8-13% coverage (open terrain)
+- **Terrain variation is real** — matches expectations for central Sinai
+
+### Full Run Estimate (1,911 sites)
+
+- Time: ~7.6 hours (fits in one Kaggle session)
+- Storage: ~25 MB total (with gzip compression)
+- Sessions needed: 1 (but checkpointing recommended)
+
+### Files Added
+
+- `experiments/day2_10sites/` — 10 level arrays + results
+- `configs/splat_colormap.json` — Official Splat! 16-level colormap
+- `src/splat_runner.py` — Updated with standard mode
+
+### Next Steps (Day 3)
+
+1. Design full run with checkpointing (every 100 sites)
+2. Run all 1,911 sites
+3. Build training dataset (terrain + coverage pairs)
+4. Begin U-Net training
+
+---
+
+*Log created: Day 2*

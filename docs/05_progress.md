@@ -4,88 +4,71 @@
 
 | Phase | Status | Completion |
 |-------|--------|------------|
-| Phase 1: Setup | Complete | 100% |
-| Phase 2: Data Prep | In Progress | 60% |
-| Phase 3: Splat! Runs | Tested | 5% |
-| Phase 4: Dataset Build | Not Started | 0% |
-| Phase 5: Model Training | Not Started | 0% |
-| Phase 6: Evaluation | Not Started | 0% |
-| Phase 7: Improvements | Not Started | 0% |
+| Phase 1: Setup | ✅ Complete | 100% |
+| Phase 2: Data Prep | ✅ Complete | 100% |
+| Phase 3: Splat! Runs | 🟢 In Progress | 1% (10/1911) |
+| Phase 4: Dataset Build | ⬜ Not Started | 0% |
+| Phase 5: Model Training | ⬜ Not Started | 0% |
+| Phase 6: Evaluation | ⬜ Not Started | 0% |
+| Phase 7: Improvements | ⬜ Not Started | 0% |
 
 ---
 
-## Phase 1: Setup - DONE
+## Phase 1: Setup ✅ DONE
 
 - [x] Create GitHub repo
-- [x] Set up Kaggle with GPU
+- [x] Set up Kaggle with GPU (2× Tesla T4)
 - [x] Install Python libraries
-- [x] Create project structure
+- [x] Compile Splat! (standard + HD)
 - [x] Set up GitHub authentication
 - [x] Clone repo to Kaggle
 
-## Phase 2: Data Preparation - IN PROGRESS
+## Phase 2: Data Preparation ✅ DONE
 
 - [x] Download SRTM tiles (N29E033, N29E034)
-- [x] Crop 50x50 km region from central Sinai
-- [x] Save cropped region as numpy array
-- [x] Convert SRTM to SDF using srtm2sdf-hd
-- [ ] Verify SDF integrity with Splat! reader
-- [ ] Document data specifications
+- [x] Crop 50×50 km region from central Sinai
+- [x] Verify terrain data (500-1400 m range)
+- [x] Convert SRTM → SDF (standard mode)
+- [x] Generate 1,911 radar sites (44×44 grid)
+- [x] Save sites to CSV
 
-## Phase 3: Splat! Execution - TESTED
+## Phase 3: Splat! Runs 🟢 IN PROGRESS
 
-- [x] Compile Splat! from source
-- [x] Identify required command-line flags
-- [x] Create test QTH/LRP/AZ files
-- [x] Run Splat! on one test site
-- [x] Measure time per site (11.8 sec)
-- [x] Measure output size (24.72 MB)
-- [ ] BLOCKED: Resolve output storage issue
-- [ ] Generate 1,911 site QTH files
-- [ ] Batch run Splat! with checkpointing
+- [x] Compile Splat! standard + HD
+- [x] Identify command flags (`-L`, `-olditm`, `-dbm`, `-metric`)
+- [x] Fix LRP file location issue
+- [x] Fix SDF naming (standard, not HD)
+- [x] Save official Splat! colormap (16 levels)
+- [x] Test on 10 diverse sites (v2)
+- [x] **Verify variation across sites** ✅
+- [ ] Full run (1,911 sites) — **PENDING**
+- [ ] Save results to Drive
 
-## Phase 4: Dataset Build - PENDING
+## Phase 4: Dataset Build ⬜ PENDING
 
-- [ ] Convert PPM outputs to numpy arrays
-- [ ] Extract dBm values (16 levels)
+- [ ] Load all 1,911 coverage maps
 - [ ] Create training pairs (terrain + coverage)
 - [ ] Train/validation split (75%/25%)
-- [ ] Save as .npy files
+- [ ] Save as PyTorch tensors
 
-## Phase 5: Model Training - PENDING
+## Phase 5: Model Training ⬜ PENDING
 
 - [ ] Build U-Net + ResNet34 model
 - [ ] Set up training loop
 - [ ] Train for 30+ epochs
 - [ ] Track loss and IoU
-- [ ] Save best model
 
-## Phase 6: Evaluation - PENDING
+## Phase 6: Evaluation ⬜ PENDING
 
 - [ ] Compute IoU on test set
 - [ ] Compare with paper (target: 0.77+)
 - [ ] Visualize predictions
-- [ ] Analyze failure cases
 
-## Phase 7: Improvements - PENDING
+## Phase 7: Improvements ⬜ PENDING
 
 - [ ] Propose enhancements
 - [ ] Test alternative architectures
-- [ ] Document improvements
 - [ ] Write research report
-
----
-
-## Known Blockers
-
-### Blocker 1: Output Storage
-- Issue: 1,911 sites x 24.72 MB = 47 GB
-- Impact: Blocks bulk Splat! runs
-- Solutions:
-  - A) Convert PPM to PNG immediately
-  - B) Extract dBm values directly
-  - C) Reduce range per site
-- Status: To be resolved in Day 2
 
 ---
 
@@ -93,13 +76,29 @@
 
 | Metric | Value | Target | Status |
 |--------|-------|--------|--------|
-| Sites count | 1,911 planned | 1,911 | Match |
-| Area size | 50x50 km | 50x50 km | Match |
-| SRTM resolution | 30 m | 30 m | Match |
-| Splat! time/site | 11.8 sec | < 60 sec | Good |
-| Total Splat! time | 6.3 hours est | - | Good |
-| Model IoU | N/A | 0.77+ | Pending |
+| Sites count | 1,911 planned | 1,911 | ✅ |
+| Area size | 50×50 km | 50×50 km | ✅ |
+| SRTM resolution | 30 m | 30 m | ✅ |
+| Splat! time/site | 14.3 s | < 60 s | ✅ |
+| Total Splat! time | 7.6 hours (est) | - | ✅ |
+| File size/site | 10-110 KB (gz) | - | ✅ |
+| Model IoU | N/A | 0.77+ | ⬜ |
 
 ---
 
-*Last updated: Day 1*
+## Issues Resolved
+
+| Issue | Day | Status |
+|-------|-----|--------|
+| SDF/HD mismatch | 2 | ✅ Fixed |
+| LRP not read | 2 | ✅ Fixed |
+| 88 colors (too many) | 2 | ✅ Fixed |
+| HD too slow | 2 | ✅ Switched to standard |
+
+## Known Blockers
+
+**None** — ready for full run.
+
+---
+
+*Last updated: Day 2*

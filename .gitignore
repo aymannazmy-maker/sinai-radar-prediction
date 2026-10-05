@@ -218,3 +218,26 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# === Project-specific ===
+# Data (large files)
+data/
+
+# Experiments (SMALL results should be tracked)
+!experiments/
+!experiments/**/*.npy.gz
+!experiments/**/*.csv
+!experiments/**/*.md
+
+# Splat! installation
+splat-1.4.2/
+splat/
+
+# Config files (track these)
+!configs/
+
+# Large outputs
+*.ppm
+*.hgt
+*.sdf
